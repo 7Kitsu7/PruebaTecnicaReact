@@ -4,11 +4,13 @@ import { usePokemons } from '../../hooks/usePokemons';
 import { useGlobalSearch } from '../../hooks/useGlobalSearch';
 import { PokemonCard } from './PokemonCard';
 import { PokemonSkeleton } from '../ui/PokemonSkeleton';
+import { PokemonModal } from './PokemonModal'; 
 import { styles } from './PokemonList.styles';
 
 export const PokemonList = () => {
   const [search, setSearch] = useState("");
   const [debouncedSearch, setDebouncedSearch] = useState("");
+  const [selectedPokemon, setSelectedPokemon] = useState(null); 
   const { ref, inView } = useInView();
 
   const { allPokemons, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading: isLoadingList } = usePokemons();
@@ -25,6 +27,9 @@ export const PokemonList = () => {
 
   const showSearchLayer = search.length >= 2;
   const isPending = (search !== debouncedSearch || isSearching) && showSearchLayer;
+
+  const handleOpenModal = (pokemon) => setSelectedPokemon(pokemon);
+  const handleCloseModal = () => setSelectedPokemon(null);
 
   return (
     <div className={styles.container}>
@@ -43,8 +48,14 @@ export const PokemonList = () => {
         <section className={styles.searchSection}>
           <div className={styles.grid}>
             {isPending 
-              ? Array.from({ length: 8 }).map((_, i) => <PokemonSkeleton key={i} />)
-              : searchResults.map(p => <PokemonCard key={`search-${p.id}`} pokemon={p} />)
+              ? Array.from({ length: 8 }).map((_, i) => <PokemonSkeleton key={`sk-search-${i}`} />)
+              : searchResults.map(p => (
+                  <PokemonCard 
+                    key={`search-${p.id}`} 
+                    pokemon={p} 
+                    onClick={handleOpenModal} 
+                  />
+                ))
             }
           </div>
           {!isPending && searchResults.length === 0 && (
@@ -56,15 +67,28 @@ export const PokemonList = () => {
 
       <section className={styles.infiniteSection(showSearchLayer)}>
         <div className={styles.grid}>
-          {allPokemons.map(p => <PokemonCard key={`list-${p.id}`} pokemon={p} />)}
+          {allPokemons.map(p => (
+            <PokemonCard 
+              key={`list-${p.id}`} 
+              pokemon={p} 
+              onClick={handleOpenModal} 
+            />
+          ))}
           {(isLoadingList || isFetchingNextPage) && 
-            Array.from({ length: 4 }).map((_, i) => <PokemonSkeleton key={i} />)
+            Array.from({ length: 4 }).map((_, i) => <PokemonSkeleton key={`sk-list-${i}`} />)
           }
         </div>
         <div ref={ref} className={styles.loaderInfo}>
           {hasNextPage ? "Cargando más Pokémon..." : "Has visto a todos los Pokémon."}
         </div>
       </section>
+
+      {selectedPokemon && (
+        <PokemonModal 
+          pokemon={selectedPokemon} 
+          onClose={handleCloseModal} 
+        />
+      )}
     </div>
   );
 };
