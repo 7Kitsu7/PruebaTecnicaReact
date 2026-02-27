@@ -1,36 +1,70 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useInView } from 'react-intersection-observer';
 import { usePokemons } from '../../hooks/usePokemons';
+import { useGlobalSearch } from '../../hooks/useGlobalSearch';
 import { PokemonCard } from './PokemonCard';
 import { PokemonSkeleton } from '../ui/PokemonSkeleton';
+import { styles } from './PokemonList.styles';
 
 export const PokemonList = () => {
-  const { data: pokemons, isLoading, isError } = usePokemons();
   const [search, setSearch] = useState("");
+  const [debouncedSearch, setDebouncedSearch] = useState("");
+  const { ref, inView } = useInView();
 
-  const filtered = pokemons?.filter(poke => 
-    poke.name.toLowerCase().includes(search.toLowerCase())
-  );
+  const { allPokemons, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading: isLoadingList } = usePokemons();
+  const { searchResults, isSearching } = useGlobalSearch(debouncedSearch);
 
-  if (isError) return <div className="text-center p-10 font-bold text-red-500">Error al cargar datos.</div>;
+  useEffect(() => {
+    const timer = setTimeout(() => setDebouncedSearch(search), 500);
+    return () => clearTimeout(timer);
+  }, [search]);
+
+  useEffect(() => {
+    if (inView && hasNextPage && !search) fetchNextPage();
+  }, [inView, hasNextPage, search, fetchNextPage]);
+
+  const showSearchLayer = search.length >= 2;
+  const isPending = (search !== debouncedSearch || isSearching) && showSearchLayer;
 
   return (
-    <div className="max-w-6xl mx-auto">
-      <header className="mb-10 flex flex-col items-center">
-        <h1 className="text-4xl font-extrabold text-slate-900 mb-6">Pokédex</h1>
+    <div className={styles.container}>
+      <header className={styles.header}>
+        <h1 className={styles.title}>Pokédex</h1>
         <input
           type="text"
-          placeholder="Escribe el nombre de un pokémon..."
-          className="w-full max-w-md p-4 rounded-2xl bg-white shadow-sm ring-1 ring-slate-200 focus:ring-2 focus:ring-blue-500 transition-all outline-none"
+          placeholder="Busca por nombre (ej: char, mega, alola)..."
+          className={styles.input}
+          value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
       </header>
 
-      <main className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        {isLoading 
-          ? Array.from({ length: 12 }).map((_, i) => <PokemonSkeleton key={i} />)
-          : filtered?.map(pokemon => <PokemonCard key={pokemon.id} pokemon={pokemon} />)
-        }
-      </main>
+      {showSearchLayer && (
+        <section className={styles.searchSection}>
+          <div className={styles.grid}>
+            {isPending 
+              ? Array.from({ length: 8 }).map((_, i) => <PokemonSkeleton key={i} />)
+              : searchResults.map(p => <PokemonCard key={`search-${p.id}`} pokemon={p} />)
+            }
+          </div>
+          {!isPending && searchResults.length === 0 && (
+            <p className={styles.noResults}>No se encontraron coincidencias.</p>
+          )}
+          <hr className={styles.divider} />
+        </section>
+      )}
+
+      <section className={styles.infiniteSection(showSearchLayer)}>
+        <div className={styles.grid}>
+          {allPokemons.map(p => <PokemonCard key={`list-${p.id}`} pokemon={p} />)}
+          {(isLoadingList || isFetchingNextPage) && 
+            Array.from({ length: 4 }).map((_, i) => <PokemonSkeleton key={i} />)
+          }
+        </div>
+        <div ref={ref} className={styles.loaderInfo}>
+          {hasNextPage ? "Cargando más Pokémon..." : "Has visto a todos los Pokémon."}
+        </div>
+      </section>
     </div>
   );
 };
