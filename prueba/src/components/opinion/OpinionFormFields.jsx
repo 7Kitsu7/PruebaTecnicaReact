@@ -17,7 +17,7 @@ export const OpinionFormFields = ({ register, errors, name }) => {
           <label className={styles.label}>Nombre Entrenador</label>
           <input 
             {...register("trainerName")} 
-            placeholder="Tu nombre o alias"
+            placeholder="Tu nombre"
             className={getInputClass(errors.trainerName)}
           />
           {errors.trainerName && (

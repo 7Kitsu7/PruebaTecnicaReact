@@ -7,16 +7,14 @@ import { Navbar } from './components/ui/Navbar';
 function App() {
   return ( 
     <BrowserRouter>
-      <Navbar />
-      <div className="min-h-screen bg-slate-50">
+      <Navbar /> 
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/pokemon/:name" element={<PokemonDetail />} />
           <Route path="/opinion/:name?" element={<Opinion />} />
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
-      </div>
-    </BrowserRouter>
+    </BrowserRouter> 
   );
 }
 

@@ -39,7 +39,7 @@ export const Opinion = () => {
                 name ? 'bg-slate-900 text-white hover:bg-blue-600' : 'bg-slate-100 text-slate-300'
               }`}
             >
-              {name ? 'Publicar en la Red' : 'Selecciona un Pokémon'}
+              {name ? 'Publicar' : 'Selecciona un Pokémon'}
             </button>
           </form>
         </div>
