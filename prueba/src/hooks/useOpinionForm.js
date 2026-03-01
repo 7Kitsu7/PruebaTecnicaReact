@@ -29,7 +29,7 @@ export const useOpinionForm = (pokemonName) => {
   const handleSend = async (data) => {
     try {
       const res = await postOpinion({ ...data, pokemon: pokemonName });
-      alert(`¡Éxito! Reporte #${res.id} creado.`);
+      alert(`¡Éxito! publicación #${res.id} creado.`);
       navigate('/');
     } catch (e) {
       alert("Error al enviar");
