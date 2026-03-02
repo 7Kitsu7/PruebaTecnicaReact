@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { POKEMON_TRANSLATIONS } from '../../constants/pokemonTranslations';
+import { POKEMON_TRANSLATIONS } from '../../../constants/pokemonTranslations';
 import { styles } from './PokemonModal.styles';
 
 export const PokemonModal = ({ pokemon, onClose }) => {

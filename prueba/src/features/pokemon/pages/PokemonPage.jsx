@@ -1,6 +1,6 @@
-import { PokemonList } from '../components/pokemon/PokemonList';
+import { PokemonList } from '../components/PokemonList';
 
-export const Home = () => {
+export const PokemonPage = () => {
   return (
     <div className="min-h-screen bg-slate-50">
       <PokemonList />

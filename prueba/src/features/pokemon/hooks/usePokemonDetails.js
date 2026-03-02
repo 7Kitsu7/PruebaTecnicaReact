@@ -5,7 +5,6 @@ export const usePokemonDetails = (name) => {
   return useQuery({
     queryKey: ['pokemon', name],
     queryFn: () => getPokemonByName(name),
-    staleTime: 1000 * 60 * 5, 
     enabled: !!name,
   });
 };

@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { styles } from './PokemonVisualizer.styles';
-import { POKEMON_TRANSLATIONS } from '../../constants/pokemonTranslations';
+import { POKEMON_TRANSLATIONS } from '../../../constants/pokemonTranslations';
 
 export const PokemonVisualizer = ({ name, pokemon, searchTerm, setSearchTerm, suggestions, onSelect }) => {
   const navigate = useNavigate();

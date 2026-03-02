@@ -2,8 +2,8 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { opinionSchema } from '../constants/schemas';
-import { postOpinion } from '../api/pokemonApi';
+import { opinionSchema } from '../schemas/opinionSchema';
+import { postOpinion } from '../api/commentsApi';
 import { usePokemonNames } from './usePokemonNames';
 
 export const useOpinionForm = (pokemonName) => {

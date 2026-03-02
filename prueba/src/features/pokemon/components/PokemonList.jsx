@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useInView } from 'react-intersection-observer';
-import { usePokemons } from '../../hooks/usePokemons';
-import { useGlobalSearch } from '../../hooks/useGlobalSearch';
+import { usePokemons } from '../hooks/usePokemons';
+import { useGlobalSearch } from '../hooks/useGlobalSearch';
 import { PokemonCard } from './PokemonCard';
-import { PokemonSkeleton } from '../ui/PokemonSkeleton';
+import { PokemonSkeleton } from '../../../components/ui/PokemonSkeleton';
 import { styles } from './PokemonList.styles';
 
 export const PokemonList = () => {

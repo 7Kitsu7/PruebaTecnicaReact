@@ -1,10 +1,10 @@
 import { useParams } from 'react-router-dom';
-import { usePokemonDetails } from '../hooks/usePokemonDetails';
+import { usePokemonDetails } from '../../pokemon/hooks/usePokemonDetails';
 import { useOpinionForm } from '../hooks/useOpinionForm';
-import { PokemonVisualizer } from '../components/opinion/PokemonVisualizer';
-import { OpinionFormFields } from '../components/opinion/OpinionFormFields';
+import { PokemonVisualizer } from '../components/PokemonVisualizer';
+import { OpinionFormFields } from '../components/OpinionFormFields';
 
-export const Opinion = () => {
+export const OpinionPage = () => {
   const { name } = useParams();
   const { data: pokemon } = usePokemonDetails(name);
   const { searchTerm, setSearchTerm, suggestions, formMethods, handleSend, selectPokemon } = useOpinionForm(name);

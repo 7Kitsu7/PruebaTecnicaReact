@@ -1,8 +1,8 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import { usePokemonDetails } from '../hooks/usePokemonDetails';
-import { PokemonModal } from '../components/pokemon/PokemonModal';
+import { PokemonModal } from '../components/PokemonModal';
 
-export const PokemonDetail = () => {
+export const PokemonDetailPage = () => {
   const { name } = useParams();
   const navigate = useNavigate();
   const { data: pokemon, isLoading } = usePokemonDetails(name);

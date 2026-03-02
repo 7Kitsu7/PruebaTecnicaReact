@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
-import { getAllNames, getPokemonDetailsList } from '../api/pokemonApi';
+import { getPokemonDetailsList } from '../api/pokemonApi';
+import { getAllNames } from '../../../services/pokemon.service';
 
 export const useGlobalSearch = (search) => {
   const query = useQuery({

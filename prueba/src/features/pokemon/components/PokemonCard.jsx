@@ -1,5 +1,5 @@
 import { styles } from './PokemonCard.styles';
-import { POKEMON_TRANSLATIONS } from '../../constants/pokemonTranslations';
+import { POKEMON_TRANSLATIONS } from '../../../constants/pokemonTranslations';
 
 export const PokemonCard = ({ pokemon, onClick }) => {
   const artwork = pokemon.sprites.other['official-artwork'].front_default;
