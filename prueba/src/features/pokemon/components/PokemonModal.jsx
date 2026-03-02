@@ -3,7 +3,7 @@ import { POKEMON_TRANSLATIONS } from '../../../constants/pokemonTranslations';
 import { styles } from './PokemonModal.styles';
 
 export const PokemonModal = ({ pokemon, onClose }) => {
-  const navigate = useNavigate(); // Hook para navegar entre rutas
+  const navigate = useNavigate(); 
 
   if (!pokemon) return null;
 

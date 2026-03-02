@@ -25,6 +25,10 @@ export const getPokemonDetailsList = (list) =>
   }));
 
 export const getPokemonByName = async (name) => {
-  const { data } = await pokeApi.get(`/pokemon/${name.toLowerCase()}`);
-  return data;
+  try {
+    const { data } = await pokeApi.get(`/pokemon/${name.toLowerCase()}`);
+    return data;
+  } catch (error) {
+    throw new Error("Pokémon no encontrado");
+  }
 };
