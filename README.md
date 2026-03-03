@@ -74,3 +74,31 @@ src/
 ├── App.jsx          # Componente raíz que renderiza la aplicación (Rutas)
 ├── index.css        # Estilos globales (Tailwind o CSS base)
 └── main.jsx         # Punto de entrada 
+```
+
+## Instalación y Ejecución
+
+> [!CAUTION]
+> Asegúrate de tener instalado:
+> - Node.js (versión LTS recomendada)
+> - npm o yarn
+
+---
+
+### 1. Clonar el repositorio
+
+```bash
+git clone https://github.com/7Kitsu7/PruebaTecnicaReact.git
+cd nombre-proyecto
+```
+### 2. Instalar dependencias
+```bash
+npm install
+```
+### 3. Ejecutar en entorno local
+```bash
+npm run dev
+```
+
+Una vez iniciado, abre tu navegador en:
+> *http://localhost:5173
