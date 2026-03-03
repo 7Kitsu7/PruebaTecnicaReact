@@ -3,6 +3,7 @@ import { PokemonPage } from './features/pokemon/pages/PokemonPage';
 import { PokemonDetailPage } from './features/pokemon/pages/PokemonDetailPage';
 import { OpinionPage } from './features/comments/pages/OpinionPage';
 import { Navbar } from './components/layout/Navbar';
+import { TrainersPage } from './features/trainers/pages/TrainersPage';
 
 function App() {
   return ( 
@@ -12,6 +13,7 @@ function App() {
           <Route path="/" element={<PokemonPage />} />
           <Route path="/pokemon/:name" element={<PokemonDetailPage />} />
           <Route path="/opinion/:name?" element={<OpinionPage />} />
+          <Route path="/trainers" element={<TrainersPage />} />
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
     </BrowserRouter> 

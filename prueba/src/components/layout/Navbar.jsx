@@ -16,6 +16,7 @@ export const Navbar = () => {
         <div className="flex gap-4">
           <NavLink to="/" className={linkStyles}>Pokedex</NavLink>
           <NavLink to="/opinion" className={linkStyles}>Opiniones</NavLink>
+          <NavLink to="/trainers" className={linkStyles}>Entrenadores</NavLink>
         </div>
       </div>
     </nav>
