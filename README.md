@@ -89,16 +89,26 @@ src/
 
 ```bash
 git clone https://github.com/7Kitsu7/PruebaTecnicaReact.git
-cd nombre-proyecto
+cd PruebaTecnicaReact/prueba
 ```
 ### 2. Instalar dependencias
 ```bash
 npm install
 ```
-### 3. Ejecutar en entorno local
+### 3. Configurar variables de entorno
+> [!IMPORTANT]
+> Crear un archivo llamado .env.local en la raíz del proyecto y añadir lo siguiente:
+```bash
+VITE_POKEAPI_URL=https://pokeapi.co/api/v2
+VITE_JSONPLACEHOLDER_URL=https://jsonplaceholder.typicode.com
+```
+> [!NOTE]
+> Estas variables permiten configurar dinámicamente las URLs base de las APIs utilizadas en el proyecto.
+### 4. Ejecutar en entorno local
 ```bash
 npm run dev
 ```
-
 Una vez iniciado, abre tu navegador en:
-> *http://localhost:5173
+```bash
+http://localhost:5173
+```
