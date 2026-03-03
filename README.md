@@ -112,3 +112,5 @@ Una vez iniciado, abre tu navegador en:
 ```bash
 http://localhost:5173
 ```
+> [!TIP]
+> Puedes probar la PokeApp desde https://pokeapp-cyan.vercel.app/
