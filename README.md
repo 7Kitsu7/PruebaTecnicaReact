@@ -9,26 +9,26 @@ Sistema de gestión integral de entrenadores y catálogo de Pokémon, desarrolla
 
 ---
 
-## 📸 Capturas de Pantalla
+## Capturas de Pantalla
 
-> [!TIP]
-> ### 🔴 Vista de Catálogo (Pokedex)
-> ![Vista Pokedex](URL_TU_CAPTURA_POKEDEX)
+
+### 🔴 Vista de Catálogo (Pokedex)
+ ![Vista Pokedex](./prueba/assets/pokedex.png) 
 > *Exploración de especies con scroll infinito y renderizado optimizado.*
 
-> [!TIP]
-> ### 🟡 Gestión de Staff (Entrenadores)
-> ![Vista Entrenadores](URL_TU_CAPTURA_TRAINERS)
-> *CRUD completo con animaciones de layout y vinculación de Pokémon.*
 
-> [!TIP]
-> ### 🔵 Feedback (Opiniones)
-> ![Vista Opiniones](URL_TU_CAPTURA_OPINIONES)
-> *Módulo de interacción para recolección de feedback de la comunidad.*
+### 🟡 Gestión de Staff (Entrenadores)
+ ![Vista Entrenadores](./prueba/assets/entrenadores.png) 
+> *CRUD completo con animaciones y vinculación de Pokémon.*
+
+
+### 🔵 Feedback (Opiniones)
+ ![Vista Opiniones](./prueba/assets/opiniones.png) 
+> *Módulo de interacción para recolección de feedback de la comunidad de entrenadores.*
 
 ---
 
-## 🚀 Funcionalidades Principales
+## Funcionalidades Principales
 
 > [!IMPORTANT]
 > **Arquitectura de Gestión Asíncrona**
@@ -43,10 +43,9 @@ Sistema de gestión integral de entrenadores y catálogo de Pokémon, desarrolla
 
 ---
 
-## 🛠️ Stack Tecnológico
+## Stack Tecnológico
 
 > [!NOTE]
-> ### Core Tecnológico (package.json)
 > - **Frontend:** React 19 (última versión estable).
 > - **Estilos:** Tailwind CSS con arquitectura de diseño moderno.
 > - **Consumo API:** Axios con instancias modulares.
@@ -56,7 +55,7 @@ Sistema de gestión integral de entrenadores y catálogo de Pokémon, desarrolla
 
 ---
 
-## 📂 Organización del Proyecto
+## Organización del Proyecto
 
 La aplicación utiliza una estructura **Feature-First**, facilitando el mantenimiento y la lectura de módulos aislados:
 
