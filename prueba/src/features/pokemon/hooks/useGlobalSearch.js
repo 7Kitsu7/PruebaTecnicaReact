@@ -9,9 +9,9 @@ export const useGlobalSearch = (search) => {
       if (!search || search.length < 2) return [];
       
       const allResults = await getAllNames();
-      
       const matches = allResults
         .filter(p => p.name.includes(search.toLowerCase().trim()))
+        .sort((a, b) => a.name.localeCompare(b.name)) // ORDEN ALFABÉTICO
         .slice(0, 20); 
         
       return getPokemonDetailsList(matches);
