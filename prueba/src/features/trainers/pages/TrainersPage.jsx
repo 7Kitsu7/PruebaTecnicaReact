@@ -18,7 +18,7 @@ export const TrainersPage = () => {
 
             <header className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-10">
                 <div className="relative">
-                    <h1 className="text-6xl font-black italic uppercase tracking-tighter leading-[0.7] text-slate-900">
+                    <h1 className="text-4xl font-black italic uppercase tracking-tighter leading-[0.7] text-slate-900">
                         Panel
                     </h1>
                     <p className="text-blue-600 font-bold uppercase text-[9px] tracking-[0.5em] mt-2 ml-1">
@@ -28,7 +28,7 @@ export const TrainersPage = () => {
 
                 <button
                     onClick={() => setModalForm({ open: true, data: null })}
-                    className="bg-blue-600 text-white px-10 py-5 rounded-2xl font-black text-[10px] uppercase tracking-widest shadow-2xl shadow-blue-200 hover:-translate-y-1 transition-all"
+                    className="bg-slate-900 text-white px-8 py-4 rounded-2xl font-black text-[10px] uppercase tracking-widest shadow-xl hover:bg-blue-600 hover:-translate-y-0.5 active:scale-95 transition-all"
                 >
                     + Nuevo Registro
                 </button>
