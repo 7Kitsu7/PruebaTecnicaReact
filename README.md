@@ -61,11 +61,16 @@ La aplicación utiliza una estructura **Feature-First**, facilitando el mantenim
 
 ```bash
 src/
-├── api/             # Configuración base y clientes Axios
-├── components/      # UI Global (Navbar, Modales, Skeletons)
+├── app/             # Configuración de queryClient
+├── assets/          # Recursos estáticos 
+├── components/      # Componentes UI reutilizables globales (Navbar, Modal, etc.)
+├── constants/       # Constantes globales (traducción de pokemones)
 ├── features/        # Módulos principales
 │   ├── pokedex/     # Lógica y vistas de Pokedex
 │   ├── opinion/     # Lógica y vistas de Comentarios
 │   └── trainers/    # CRUD completo de Entrenadores
-├── hooks/           # Custom hooks globales
-└── lib/             # Instancias de librerías externas
+├── lib/             # Configuración e instancias de librerías externas (axios)
+├── services/        # Lógica de comunicación con APIs y servicios externos
+├── App.jsx          # Componente raíz que renderiza la aplicación (Rutas)
+├── index.css        # Estilos globales (Tailwind o CSS base)
+└── main.jsx         # Punto de entrada 
