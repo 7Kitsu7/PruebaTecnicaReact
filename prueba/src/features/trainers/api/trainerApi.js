@@ -1,8 +1,7 @@
 import { commentApi, pokeApi } from '../../../lib/axios';
 
 export const getInitialTrainers = async () => {
-  const { data: users } = await commentApi.get('/users?_limit=5');
-  
+  const { data: users } = await commentApi.get('/users?_limit=4');
   return await Promise.all(
     users.map(async (user) => {
       try {
@@ -24,28 +23,16 @@ export const getInitialTrainers = async () => {
 };
 
 export const createTrainerApi = async (trainer) => {
-  try {
-    const { data } = await commentApi.post('/users', trainer);
-    return { ...trainer, id: Date.now() };
-  } catch (error) {
-    return { ...trainer, id: Date.now() };
-  }
+  await commentApi.post('/users', trainer);
+  return { ...trainer, id: Date.now() };
 };
 
 export const updateTrainerApi = async ({ id, data }) => {
-  try {
-    if (id <= 10) await commentApi.put(`/users/${id}`, data);
-    return { id, data };
-  } catch (error) {
-    return { id, data };
-  }
+  if (id <= 10) await commentApi.put(`/users/${id}`, data);
+  return { id, data };
 };
 
 export const deleteTrainerApi = async (id) => {
-  try {
-    if (id <= 10) await commentApi.delete(`/users/${id}`);
-    return id;
-  } catch (error) {
-    return id;
-  }
+  if (id <= 10) await commentApi.delete(`/users/${id}`);
+  return id;
 };
